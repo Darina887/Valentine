@@ -5,7 +5,6 @@ const images = [
   "val1.png",
   "val2.png",
   "val3.png",
-  "val4.png",
   "val5.png"
 ];
 
