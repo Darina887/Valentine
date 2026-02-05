@@ -2,11 +2,11 @@ const tg = window.Telegram.WebApp;
 tg.expand();
 
 const images = [
-  "images/val1.png",
-  "images/val2.png",
-  "images/val3.png",
-  "images/val4.png",
-  "images/val5.png"
+  "./val1.png",
+  "./val2.png",
+  "./val3.png",
+  "./val4.png",
+  "./val5.png"
 ];
 
 let currentIndex = 0;
