@@ -80,8 +80,6 @@ sendBtn.onclick = () => {
 
   tg.switchInlineQuery(
     "Валентинка 💌",
-    {
-      choose_chat_types: ["users"]
-    }
+    { choose_chat_types: ["users"] }
   );
 };
