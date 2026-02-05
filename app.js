@@ -30,6 +30,12 @@ function showCard() {
   img.src = images[currentIndex];
   img.className = "card";
 
+  // 👇 выбор валентинки по нажатию
+  img.addEventListener("click", () => {
+    selectedImage = images[currentIndex];
+    sendBtn.classList.remove("hidden");
+  });
+
   cardContainer.appendChild(img);
   enableSwipe(img);
 }
@@ -49,24 +55,14 @@ function enableSwipe(card) {
 
   card.addEventListener("touchend", () => {
     if (Math.abs(currentX) > 80) {
-      // 👉 сохраняем выбранную
-      selectedImage = images[currentIndex];
-
-      // 👉 следующий индекс
       currentIndex++;
 
-      // 👉 если дошли до конца — начинаем сначала
       if (currentIndex >= images.length) {
         currentIndex = 0;
       }
 
-      // 👉 показываем следующую валентинку
       showCard();
-
-      // 👉 показываем кнопку отправки
-      sendBtn.classList.remove("hidden");
     } else {
-      // если свайп короткий — возвращаем обратно
       card.style.transform = "";
     }
 
@@ -75,8 +71,10 @@ function enableSwipe(card) {
 }
 
 sendBtn.onclick = () => {
+  if (!selectedImage) return;
+
   tg.switchInlineQuery(
-    `Валентинка ❤️`,
+    "Валентинка 💌",
     {
       choose_chat_types: ["users"]
     }
