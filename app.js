@@ -45,16 +45,32 @@ function enableSwipe(card) {
 
   card.addEventListener("touchmove", e => {
     currentX = e.touches[0].clientX - startX;
-    card.style.transform = `translateX(${currentX}px) rotate(${currentX / 10}deg)`;
+    card.style.transform = `translateX(${currentX}px) rotate(${currentX / 15}deg)`;
   });
 
   card.addEventListener("touchend", () => {
-    if (Math.abs(currentX) > 100) {
+    if (Math.abs(currentX) > 80) {
+      // 👉 сохраняем выбранную
       selectedImage = images[currentIndex];
+
+      // 👉 следующий индекс
+      currentIndex++;
+
+      // 👉 если дошли до конца — начинаем сначала
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+
+      // 👉 показываем следующую валентинку
+      showCard();
+
+      // 👉 показываем кнопку отправки
       sendBtn.classList.remove("hidden");
     } else {
+      // если свайп короткий — возвращаем обратно
       card.style.transform = "";
     }
+
     currentX = 0;
   });
 }
