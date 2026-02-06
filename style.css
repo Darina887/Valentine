@@ -6,23 +6,35 @@
 body {
   margin: 0;
   min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  background: #000;
+}
 
+/* 🔥 ФОН */
+.bg {
+  position: fixed;
+  inset: 0;
   background-image: url("background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  color: #fff;
-  text-align: center;
+  z-index: 0;
 }
 
-/* затемнение фона */
-body::before {
+/* затемнение */
+.bg::after {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
-  z-index: -1;
+}
+
+/* UI поверх фона */
+#start-screen,
+#app {
+  position: relative;
+  z-index: 1;
 }
 
 .hidden {
